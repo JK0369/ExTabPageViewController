@@ -57,7 +57,7 @@ final class HeaderCell: UICollectionViewCell {
 
 extension Reactive where Base: HeaderCell {
     var tapContent: Observable<Void> {
-        base.titleButton.rx.tap.mapTo(()).asObservable()
+        return base.titleButton.rx.tap.mapTo(()).asObservable()
     }
     
     var prepare: Binder<HeaderItemType?> {

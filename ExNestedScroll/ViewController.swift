@@ -42,8 +42,7 @@ class ViewController: UIViewController {
     }
     
     private func bind() {
-        var items = (0...7)
-            .map(String.init)
+        var items = ["1", "jake", "iOS 앱 개발 알아가기", "2", "jake123", "example", "3"]
             .enumerated()
             .map { index, str in HeaderItemType(title: str, isSelected: index == 0) }
         

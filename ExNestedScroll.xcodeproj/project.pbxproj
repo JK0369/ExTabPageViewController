@@ -16,6 +16,7 @@
 		4A7026E6297283F200083FB2 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7026E5297283F200083FB2 /* MyCell.swift */; };
 		4A7026E8297285BD00083FB2 /* TabHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7026E7297285BD00083FB2 /* TabHeaderView.swift */; };
 		4A7026EA2972895A00083FB2 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7026E92972895A00083FB2 /* HeaderCell.swift */; };
+		4A7026EC2972F9FA00083FB2 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7026EB2972F9FA00083FB2 /* UILabel+Extension.swift */; };
 		861A8CE5FAAD4E9E6428157E /* Pods_ExNestedScroll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F3D75708E471AC654D7AED /* Pods_ExNestedScroll.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		4A7026E5297283F200083FB2 /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		4A7026E7297285BD00083FB2 /* TabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabHeaderView.swift; sourceTree = "<group>"; };
 		4A7026E92972895A00083FB2 /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		4A7026EB2972F9FA00083FB2 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		A2F3D75708E471AC654D7AED /* Pods_ExNestedScroll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExNestedScroll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5CED09722A134824705505E /* Pods-ExNestedScroll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExNestedScroll.debug.xcconfig"; path = "Target Support Files/Pods-ExNestedScroll/Pods-ExNestedScroll.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 				4A7026D32972786E00083FB2 /* SceneDelegate.swift */,
 				4A7026D52972786E00083FB2 /* ViewController.swift */,
 				4A7026E7297285BD00083FB2 /* TabHeaderView.swift */,
+				4A7026EB2972F9FA00083FB2 /* UILabel+Extension.swift */,
 				4A7026E92972895A00083FB2 /* HeaderCell.swift */,
 				4A7026E5297283F200083FB2 /* MyCell.swift */,
 				4A7026D72972786E00083FB2 /* Main.storyboard */,
@@ -218,6 +221,7 @@
 				4A7026E8297285BD00083FB2 /* TabHeaderView.swift in Sources */,
 				4A7026D62972786E00083FB2 /* ViewController.swift in Sources */,
 				4A7026D22972786E00083FB2 /* AppDelegate.swift in Sources */,
+				4A7026EC2972F9FA00083FB2 /* UILabel+Extension.swift in Sources */,
 				4A7026E6297283F200083FB2 /* MyCell.swift in Sources */,
 				4A7026EA2972895A00083FB2 /* HeaderCell.swift in Sources */,
 				4A7026D42972786E00083FB2 /* SceneDelegate.swift in Sources */,

@@ -19,8 +19,11 @@ struct HeaderItemType {
 
 final class TabHeaderView: UIView {
     // MARK: Constants
-    private enum Metric {
+    fileprivate enum Metric {
         static let interItemSpacing = 12.0
+        static let underlineViewHeight = 4.0
+        static let underlineViewTopSpacing = 6.0
+        static let collectionViewBottomSpacing = underlineViewHeight + underlineViewTopSpacing
     }
     
     // MARK: UI
@@ -38,6 +41,9 @@ final class TabHeaderView: UIView {
         $0.backgroundColor = .clear
         $0.clipsToBounds = true
         $0.register(HeaderCell.self, forCellWithReuseIdentifier: HeaderCell.id)
+    }
+    fileprivate let underlineView = UIView().then {
+        $0.backgroundColor = .gray
     }
     
     // MARK: Properties
@@ -59,12 +65,19 @@ final class TabHeaderView: UIView {
     // MARK: Layout
     private func setUp() {
         addSubview(collectionView)
+        addSubview(underlineView)
         
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.left.right.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(Metric.collectionViewBottomSpacing)
         }
-        
+
         collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        DispatchQueue.main.async {
+            self.selectedPublish.onNext(0)
+        }
     }
 }
 
@@ -92,14 +105,35 @@ extension TabHeaderView: UICollectionViewDataSource {
     }
 }
 
+extension TabHeaderView: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let size = items[indexPath.row].title.size(OfFont: .systemFont(ofSize: 18))
+        let width = size.width + 0.2
+        return CGSize(width: width, height: size.height)
+    }
+}
+
 extension Reactive where Base: TabHeaderView {
     var selectedIndex: Observable<Int> {
         base.selectedPublish.asObservable()
+            .do { ind in
+                let selectedCell = base.collectionView.cellForItem(at: IndexPath(item: ind, section: 0))
+                guard let selectedCell else { return }
+                base.underlineView.snp.remakeConstraints {
+                    $0.left.right.equalTo(selectedCell)
+                    $0.bottom.equalTo(selectedCell).offset(TabHeaderView.Metric.underlineViewTopSpacing)
+                    $0.height.equalTo(TabHeaderView.Metric.underlineViewHeight)
+                }
+                UIView.animate(withDuration: 0.1, delay: 0, animations: base.layoutIfNeeded)
+            }
     }
     
     var updateCells: Binder<[UpdateHeaderItemType]> {
         Binder(base) { base, items in
-            
             items.forEach { ind, item in
                 base.items[ind] = item
             }
