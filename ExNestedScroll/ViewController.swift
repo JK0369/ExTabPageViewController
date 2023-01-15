@@ -47,15 +47,6 @@ class ViewController: UIViewController {
         bindTabHeader()
     }
     
-    private func setUpViews() {
-        pageViewController.dataSource = self
-        pageViewController.delegate = self
-        
-        addChild(pageViewController)
-        pageViewController.didMove(toParent: self)
-        pageViewController.setViewControllers([contentViewControllers[0]], direction: .forward, animated: false)
-    }
-    
     private func setViewControllers() {
         items
             .map(\.title)
@@ -64,6 +55,15 @@ class ViewController: UIViewController {
                 vc.titleText = title
                 contentViewControllers.append(vc)
             }
+    }
+    
+    private func setUpViews() {
+        pageViewController.dataSource = self
+        pageViewController.delegate = self
+        
+        addChild(pageViewController)
+        pageViewController.didMove(toParent: self)
+        pageViewController.setViewControllers([contentViewControllers[0]], direction: .forward, animated: false)
     }
     
     private func setUpLayouts() {
