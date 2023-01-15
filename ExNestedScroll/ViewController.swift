@@ -27,16 +27,16 @@ class ViewController: UIViewController {
         $0.axis = .vertical
     }
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-    fileprivate var contentViewControllers = [UIViewController]()
-    private var lastSelectedIndex: Int {
-        items.firstIndex(where: { $0.isSelected }) ?? 0
-    }
     
     // MARK: Properties
     private let disposeBag = DisposeBag()
     private var items = ["1", "jake", "iOS 앱 개발 알아가기", "2", "jake123"]
         .enumerated()
         .map { index, str in HeaderItemType(title: str, isSelected: index == 0) }
+    private var lastSelectedIndex: Int {
+        items.firstIndex(where: { $0.isSelected }) ?? 0
+    }
+    fileprivate var contentViewControllers = [UIViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
