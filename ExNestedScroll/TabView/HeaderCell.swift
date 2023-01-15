@@ -56,10 +56,6 @@ final class HeaderCell: UICollectionViewCell {
 }
 
 extension Reactive where Base: HeaderCell {
-    var tapContent: Observable<Void> {
-        return base.titleButton.rx.tap.mapTo(()).asObservable()
-    }
-    
     var prepare: Binder<HeaderItemType?> {
         Binder(base) { base, itemType in
             base.titleButton.setTitle(itemType?.title, for: .normal)
@@ -68,9 +64,7 @@ extension Reactive where Base: HeaderCell {
         }
     }
     
-    var isSelected: Binder<Bool> {
-        Binder(base) { base, isSelected in
-            base.titleButton.rx.isSelected.onNext(isSelected)
-        }
+    var onTap: Observable<Void> {
+        base.titleButton.rx.tap.mapTo(()).asObservable()
     }
 }
